@@ -50,9 +50,14 @@
       height: 100%;
       background-color: rgba(0,0,0,0.5);
     }
-    .clock {
-       font-family: 'CustomClock', sans-serif;
-    }  
+    .clock { position: absolute; 
+            font-family: 'CustomClock', sans-serif; top: 10%; 
+            left: 50%; 
+            transform: translateX(-50%); 
+            color: white; 
+            text-align: center; 
+            font-size: 3rem; /* 크게 설정 */ 
+           }
     .music {
       position: absolute;
       bottom: 20px;
