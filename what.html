@@ -567,7 +567,6 @@
             nextButton.style.display = 'none';
             choicesContainer.style.display = 'block';
             choicesContainer.innerHTML = '';
-            console.log("ddf");
 
             choices.forEach(choice => {
                 const button = document.createElement('button');
@@ -596,7 +595,6 @@
         function showDialogue() {
             const currentSceneData = scenes[currentScene];
             if (currentSceneData && currentDialogue < currentSceneData.dialogues.length) {
-                console.log("dggg");
                 const dialogue = currentSceneData.dialogues[currentDialogue];
                 characterName.textContent = dialogue.name;
                 dialogueText.textContent = dialogue.text;
@@ -612,7 +610,7 @@
                     nextButton.style.display = 'block';
                     choicesContainer.style.display = 'none';
                 }
-            else {
+            } else {
                 changeScene('end');
             }
         }
