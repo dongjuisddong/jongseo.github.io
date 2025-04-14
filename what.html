@@ -606,12 +606,13 @@
                 }
 
                 if (dialogue.choices) {
-                    console.log("tlqkf");
                     showChoices(dialogue.choices);
                 } else {
                     nextButton.style.display = 'block';
                     choicesContainer.style.display = 'none';
                 }
+            else if(dialogue.choices) {
+                    showChoices(dialogue.choices);)
             } else {
                 changeScene('end');
             }
