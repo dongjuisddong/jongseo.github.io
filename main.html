@@ -14,7 +14,7 @@
     }
     body {
       display: flex;
-      justify-content: center; /* 수정됨! */
+      justify-content: center;
       height: 100vh;
       overflow: hidden;
     }
@@ -48,7 +48,7 @@
       transform: translateX(-50%);
       color: white;
       text-align: center;
-      font-size: 2.5rem;
+      font-size: 3rem; /* 크게 설정 */
       font-weight: bold;
     }  
     .music {
@@ -105,6 +105,7 @@
       border-radius: 20px;
       margin-top: 10px;
       position: relative;
+      font-size: 1.2rem; /* 상대적으로 작게 설정 */
     }
     .speech-bubble::after {
       content: '';
@@ -132,8 +133,8 @@
 <body>
   <div class="left">
     <div class="overlay"></div>
-    <div class="clock">
-      2월 27일 화요일<br/>02:08
+    <div class="clock" id="clock">
+      <!-- 동적으로 시간과 날짜가 표시됩니다 -->
     </div>
     <div class="music">
       <iframe src="https://www.youtube.com/embed/8SsV2haN2sA?autoplay=1&mute=1" allow="autoplay; encrypted-media"></iframe>
@@ -161,18 +162,25 @@
       <button onclick="location.href='character.html'">캐릭터</button>
     </div>
   </div>
+  <script>
+    // 현재 날짜와 시간 받아오기
+    function updateClock() {
+      const today = new Date();
+      const year = today.getFullYear();
+      const month = String(today.getMonth() + 1).padStart(2, '0');
+      const day = String(today.getDate()).padStart(2, '0');
+      const hours = String(today.getHours()).padStart(2, '0');
+      const minutes = String(today.getMinutes()).padStart(2, '0');
+      const daysOfWeek = ["일", "월", "화", "수", "목", "금", "토"];
+      const dayOfWeek = daysOfWeek[today.getDay()];
+
+      // 왼쪽 위 시계 부분 업데이트
+      document.getElementById("clock").innerText = `${month}월 ${day}일 ${dayOfWeek}\n${hours}:${minutes}`;
+    }
+
+    // 페이지 로드 후 시계 업데이트
+    setInterval(updateClock, 1000); // 1초마다 시계를 업데이트
+    updateClock(); // 페이지 로드 시 처음 한 번 실행
+  </script>
 </body>
 </html>
-<script>
-  // 현재 날짜 받아오기
-  const today = new Date();
-  const year = today.getFullYear();
-  const month = String(today.getMonth() + 1).padStart(2, '0');
-  const day = String(today.getDate()).padStart(2, '0');
-
-  // 연도.월 부분 삽입
-  document.addEventListener("DOMContentLoaded", function () {
-    document.getElementById("date-month").innerText = `${year}.${month}`;
-    document.getElementById("date-day").innerText = `${day}`;
-  });
-</script>
