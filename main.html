@@ -144,7 +144,7 @@
       <!-- 동적으로 시간과 날짜가 표시됩니다 -->
     </div>
     <div class="music">
-      <iframe src="https://www.youtube.com/embed/8SsV2haN2sA?autoplay=1&mute=1" allow="autoplay; encrypted-media"></iframe>
+      <div id="player"></div>
     </div>
   </div>
   <div class="right">
@@ -200,6 +200,40 @@
     // 페이지 로드 후 시계 업데이트
     setInterval(updateClock, 1000); // 1초마다 시계를 업데이트
     updateClock(); // 페이지 로드 시 처음 한 번 실행
+
+
+     // YouTube Player API 스크립트 로드
+      var tag = document.createElement('script');
+      tag.src = "https://www.youtube.com/iframe_api";
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    
+      // 플레이어 변수
+      var player;
+    
+      // YouTube API가 로드되면 실행되는 함수
+      function onYouTubeIframeAPIReady() {
+        player = new YT.Player('player', {
+          height: '80',
+          width: '300',
+          videoId: '8SsV2haN2sA', // 기존 YouTube 영상 ID
+          playerVars: {
+            'autoplay': 1,   // 자동 재생
+            'mute': 0        // 음소거 해제
+          },
+          events: {
+            'onReady': onPlayerReady
+          }
+        });
+      }
+    
+      // 플레이어 준비 완료 시 실행되는 함수
+      function onPlayerReady(event) {
+        // 볼륨을 30%로 설정 (0-100 사이 값)
+        event.target.setVolume(30);
+        event.target.playVideo();
+      }
+    
   </script>
 </body>
 </html>
