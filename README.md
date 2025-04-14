@@ -1,1 +1,0 @@
-# jongseo.github.io
