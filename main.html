@@ -2,113 +2,150 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>캐릭터 테마 UI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>캐릭터 홈</title>
+  <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css" rel="stylesheet">
   <style>
-    body {
+    * {
       margin: 0;
-      font-family: 'Pretendard', sans-serif;
-      background-color: #1e1e1e;
-      color: #fff;
+      padding: 0;
+      font-family: 'Pretendard Variable', sans-serif;
+      box-sizing: border-box;
+    }
+    body {
       display: flex;
       height: 100vh;
+      overflow: hidden;
     }
-
     .left {
-      flex: 2;
-      background: url('./static/images/he.jpg') no-repeat center center/cover;
+      flex: 1;
       position: relative;
+      background: url('ho.jpg') center/cover no-repeat;
     }
-
+    .overlay {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+    }
     .clock {
       position: absolute;
       top: 20px;
       left: 20px;
-      font-size: 48px;
+      color: white;
+      font-size: 2.5rem;
+      font-weight: bold;
     }
-
-    .date {
+    .music {
       position: absolute;
-      top: 70px;
+      bottom: 20px;
       left: 20px;
-      font-size: 18px;
     }
-
-    .music-player {
-      position: absolute;
-      bottom: 30px;
-      left: 20px;
-      background: rgba(255, 255, 255, 0.1);
-      padding: 10px 20px;
-      border-radius: 10px;
-      backdrop-filter: blur(10px);
+    iframe {
+      width: 300px;
+      height: 80px;
+      border: none;
     }
-
     .right {
-      flex: 1;
-      background-color: #2b2b2b;
+      width: 350px;
+      background-color: #1e1e1e;
+      color: white;
       padding: 20px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
     }
-
     .nav-buttons {
       display: flex;
-      flex-direction: column;
       gap: 10px;
-      margin-bottom: 20px;
+      justify-content: center;
+      margin-top: 20px;
     }
-
     .nav-buttons button {
-      padding: 10px;
-      background-color: #444;
+      background-color: #333;
       color: white;
       border: none;
-      border-radius: 5px;
+      padding: 10px 15px;
+      border-radius: 8px;
       cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
     }
-
     .nav-buttons button:hover {
-      background-color: #666;
+      background-color: #555;
+    }
+    .character {
+      text-align: center;
+      margin-top: 40px;
+    }
+    .character img {
+      width: 120px;
+      border-radius: 12px;
+    }
+    .speech-bubble {
+      background: #ffffff;
+      color: black;
+      display: inline-block;
+      padding: 10px 15px;
+      border-radius: 20px;
+      margin-top: 10px;
+      position: relative;
+    }
+    .speech-bubble::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 20px;
+      border-width: 10px 10px 0;
+      border-style: solid;
+      border-color: #ffffff transparent;
+      display: block;
+      width: 0;
+    }
+    .calendar {
+      text-align: center;
+      font-size: 0.9rem;
+      margin-top: 30px;
+    }
+    .calendar .date {
+      font-size: 3rem;
+      margin-top: 10px;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
   <div class="left">
-    <div class="clock" id="clock">02:08</div>
-    <div class="date">2월 27일 화요일</div>
-    <div class="music-player">
-      <iframe width="300" height="170"
-        src="https://www.youtube.com/embed/8SsV2haN2sA?controls=1"
-        frameborder="0"
-        allow="autoplay; encrypted-media"
-        allowfullscreen>
-      </iframe>
+    <div class="overlay"></div>
+    <div class="clock">
+      2월 27일 화요일<br/>02:08
+    </div>
+    <div class="music">
+      <iframe src="https://www.youtube.com/embed/8SsV2haN2sA?autoplay=1&mute=1" allow="autoplay; encrypted-media"></iframe>
     </div>
   </div>
   <div class="right">
-    <div>
-      <h2>JONGHAN</h2>
-      <p>귀찮게 하지 말고 비켜.<br />싫은데?</p>
-      <h2>SUHGYEOM</h2>
-      <p>너는 꼭 죽이고 간다.<br />해보시던가.</p>
+    <div class="character">
+      <img src="https://via.placeholder.com/120x120?text=JONGHAN" alt="jonghan"/>
+      <div class="speech-bubble">귀찮게 하지 말고 비켜.</div>
     </div>
+
+    <div class="calendar">
+      <div>2024.02</div>
+      <div class="date">09</div>
+      <div>한 놈이 죽거나, 두 놈이 죽거나.</div>
+    </div>
+
+    <div class="character">
+      <img src="https://via.placeholder.com/120x120?text=SUHGYEOM" alt="suhgyeom"/>
+      <div class="speech-bubble">너는 꼭 죽이고 간다.</div>
+    </div>
+
     <div class="nav-buttons">
-      <button>커미션</button>
-      <button>그림</button>
-      <button>캐릭터</button>
+      <button onclick="location.href='commission.html'">커미션</button>
+      <button onclick="location.href='drawing.html'">그림</button>
+      <button onclick="location.href='character.html'">캐릭터</button>
     </div>
   </div>
-  <script>
-    function updateClock() {
-      const now = new Date();
-      const hours = now.getHours().toString().padStart(2, '0');
-      const minutes = now.getMinutes().toString().padStart(2, '0');
-      document.getElementById('clock').innerText = `${hours}:${minutes}`;
-    }
-    setInterval(updateClock, 1000);
-    updateClock();
-  </script>
 </body>
 </html>
