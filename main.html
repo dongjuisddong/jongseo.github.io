@@ -13,8 +13,10 @@
       box-sizing: border-box;
     }
     @font-face {
-      font-family: 'CustomClock'; /* 원하는 폰트 이름 지정 */
-      src: url('./fonts/MaruBuri-Bold.ttf') format('truetype');
+      font-family: 'CustomClock';
+      src: url('/absolute/path/to/MaruBuri-Bold.woff2') format('woff2'),
+           url('/absolute/path/to/MaruBuri-Bold.woff') format('woff'),
+           url('/absolute/path/to/MaruBuri-Bold.ttf') format('truetype');
       font-weight: normal;
       font-style: normal;
     }
@@ -49,14 +51,7 @@
       background-color: rgba(0,0,0,0.5);
     }
     .clock {
-      position: absolute;
-      font-family: 'CustomClock', sans-serif;
-      top: 10%;
-      left: 50%;
-      transform: translateX(-50%);
-      color: white;
-      text-align: center;
-      font-size: 3rem; /* 크게 설정 */
+       font-family: 'CustomClock', sans-serif;
     }  
     .music {
       position: absolute;
