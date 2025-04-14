@@ -164,6 +164,18 @@
   </div>
   <script>
     // 현재 날짜와 시간 받아오기
+    // 현재 날짜 받아오기
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = String(today.getMonth() + 1).padStart(2, '0');
+  const day = String(today.getDate()).padStart(2, '0');
+
+  // 연도.월 부분 삽입
+  document.addEventListener("DOMContentLoaded", function () {
+    // 여기서 템플릿 리터럴을 사용해 변수들을 삽입
+    document.getElementById("date-month").innerText = `${year}.${month}`;
+    document.getElementById("date-day").innerText = `${day}`;
+  });
     function updateClock() {
       const today = new Date();
       const year = today.getFullYear();
