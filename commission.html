@@ -224,23 +224,365 @@
         // The server would scan the 'comi' folder and return info about available images
         let allImages = [
             {
-                src: './comi/1.jpg', // 실제 이미지 경로
+                src: './comi/1.jpg',
                 alt: '이미지 1',
-                description: '이미지 1에 대한 설명'
+                description: '커미션: daga'
             },
             {
                 src: './comi/2.jpg',
                 alt: '이미지 2',
-                description: '이미지 2에 대한 설명'
+                description: '커미션: 다빈'
             },
             {
                 src: './comi/3.jpg',
                 alt: '이미지 3',
-                description: '이미지 3에 대한 설명'
+                description: '커미션: 햄다'
+            },
+            {
+                src: './comi/4.jpg',
+                alt: '이미지 4',
+                description: '커미션: 휴'
+            },
+            {
+                src: './comi/5.jpg',
+                alt: '이미지 5',
+                description: '커미션: 옹이장이'
+            },
+            {
+                src: './comi/6.jpg',
+                alt: '이미지 6',
+                description: '커미션: kRpass'
+            },
+            {
+                src: './comi/7.jpg',
+                alt: '이미지 7',
+                description: '커미션: 새우깡'
+            },
+            {
+                src: './comi/8.jpg',
+                alt: '이미지 8',
+                description: '커미션: 맹꽁'
+            },
+            {
+                src: './comi/9.jpg',
+                alt: '이미지 9',
+                description: '커미션: 옹이장이'
+            },
+            {
+                src: './comi/10.jpg',
+                alt: '이미지 10',
+                description: '커미션: 햄다'
+            },
+            {
+                src: './comi/11.jpg',
+                alt: '이미지 11',
+                description: '(익명) 트친님 그림..// 좋은느낌'
+            },
+            {
+                src: './comi/12.jpg',
+                alt: '이미지 12',
+                description: '트친 꽁지 그림'
+            },
+            {
+                src: './comi/13.jpg',
+                alt: '이미지 13',
+                description: '트친 꽁지 그림'
+            },
+            {
+                src: './comi/14.jpg',
+                alt: '이미지 14',
+                description: '트친 클로디 커미션'
+            },
+            {
+                src: './comi/15.jpg',
+                alt: '이미지 15',
+                description: '커미션: 이도'
+            },
+            {
+                src: './comi/16.jpg',
+                alt: '이미지 16',
+                description: '트친 쥰님 그림'
+            },
+            {
+                src: './comi/17.jpg',
+                alt: '이미지 17',
+                description: '트친 꽁지 그림'
+            },
+            {
+                src: './comi/18.jpg',
+                alt: '이미지 18',
+                description: '트친 쥰님 그림'
+            },
+            {
+                src: './comi/19.jpg',
+                alt: '이미지 19',
+                description: '트친 쥰님 그림'
+            },
+            {
+                src: './comi/20.jpg',
+                alt: '이미지 20',
+                description: '트친 꽁지 그림'
+            },
+            {
+                src: './comi/21.jpg',
+                alt: '이미지 21',
+                description: '클로디가 선물로 준 커미션인데 이름..이 없네요 나중에 추가'
+            },
+            {
+                src: './comi/22.jpg',
+                alt: '이미지 22',
+                description: '꽁지 그림'
+            },
+            {
+                src: './comi/23.jpg',
+                alt: '이미지 23',
+                description: '꽁지 그림'
+            },
+            {
+                src: './comi/24.jpg',
+                alt: '이미지 24',
+                description: '로디 그림'
+            },
+            {
+                src: './comi/25.jpg',
+                alt: '이미지 25',
+                description: '로디 그림'
+            },
+            {
+                src: './comi/26.jpg',
+                alt: '이미지 26',
+                description: '꽁지 그림'
+            },
+            {
+                src: './comi/27.jpg',
+                alt: '이미지 27',
+                description: '트친 엔니 그림'
+            },
+            {
+                src: './comi/28.jpg',
+                alt: '이미지 28',
+                description: '트친 엔니 그림'
+            },
+            {
+                src: './comi/29.jpg',
+                alt: '이미지 29',
+                description: '트친 바리 그림(트레틀 사용)'
+            },
+            {
+                src: './comi/30.jpg',
+                alt: '이미지 30',
+                description: '꽁지 커미션 그림'
+            },
+            {
+                src: './comi/31.jpg',
+                alt: '이미지 31',
+                description: '커미션 다옴'
+            },
+            {
+                src: './comi/32.jpg',
+                alt: '이미지 32',
+                description: '커미션: naknak'
+            },
+            {
+                src: './comi/33.jpg',
+                alt: '이미지 33',
+                description: '커미션: tqy'
+            },
+            {
+                src: './comi/34.jpg',
+                alt: '이미지 34',
+                description: '커미션: daga'
+            },
+            {
+                src: './comi/35.jpg',
+                alt: '이미지 35',
+                description: '커미션: 간판 없는 식당'
+            },
+            {
+                src: './comi/36.jpg',
+                alt: '이미지 36',
+                description: '커미션: 히스'
+            },
+            {
+                src: './comi/37.jpg',
+                alt: '이미지 37',
+                description: '커미션: 히스'
+            },
+            {
+                src: './comi/38.jpg',
+                alt: '이미지 38',
+                description: '(개앤오)(그래도 사랑해) 박시애놈 그림'
+            },
+            {
+                src: './comi/40.jpg',
+                alt: '이미지 40',
+                description: '꽁지 그림'
+            },
+            {
+                src: './comi/41.jpg',
+                alt: '이미지 41',
+                description: '로디 그림'
+            },
+            {
+                src: './comi/42.jpg',
+                alt: '이미지 42',
+                description: '트친 초이 그림'
+            },
+            {
+                src: './comi/43.jpg',
+                alt: '이미지 43',
+                description: '트친 물묵 커미션'
+            },
+            {
+                src: './comi/44.jpg',
+                alt: '이미지 44',
+                description: '박시애 그림'
+            },
+            {
+                src: './comi/45.jpg',
+                alt: '이미지 45',
+                description: '트친 제야 그림'
+            },
+            {
+                src: './comi/48.jpg',
+                alt: '이미지 48',
+                description: '커미션: 뷃님'
+            },
+            {
+                src: './comi/47.jpg',
+                alt: '이미지 47',
+                description: '트친 이주스 림'
+            },
+            {
+                src: './comi/48.jpg',
+                alt: '이미지 48',
+                description: '트친 짹째 그림'
+            },
+            {
+                src: './comi/49.jpg',
+                alt: '이미지 49',
+                description: '커미션: 멍석님'
+            },
+            {
+                src: './comi/50.jpg',
+                alt: '이미지 50',
+                description: '이주스 그림'
+            },
+            {
+                src: './comi/51.jpg',
+                alt: '이미지 51',
+                description: '박시애 그림'
+            },
+            {
+                src: './comi/52.jpg',
+                alt: '이미지 52',
+                description: '트친 도둑님 그림'
+            },
+            {
+                src: './comi/53.jpg',
+                alt: '이미지 53',
+                description: 트친 도둑님 그림'
+            },
+            {
+                src: './comi/54.jpg',
+                alt: '이미지 54',
+                description: '커미션: 하이랄 국밥집 사장'
+            },
+            {
+                src: './comi/55.jpg',
+                alt: '이미지 55',
+                description: '박시애 faith au 연성'
+            },
+            {
+                src: './comi/56.jpg',
+                alt: '이미지 56',
+                description: '이주스 그림'
+            },
+            {
+                src: './comi/57.jpg',
+                alt: '이미지 57',
+                description: '꽁지 그림'
+            },
+            {
+                src: './comi/58.jpg',
+                alt: '이미지 58',
+                description: '로디 그림'
+            },
+            {
+                src: './comi/60.jpg',
+                alt: '이미지 60',
+                description: '박시애 그림'
+            },
+            {
+                src: './comi/61.jpg',
+                alt: '이미지 61',
+                description: '짹째 그림'
+            },
+            {
+                src: './comi/62.jpg',
+                alt: '이미지 62',
+                description: '쥰님 그림'
+            },
+            {
+                src: './comi/63.jpg',
+                alt: '이미지 63',
+                description: '쥰님 그림'
+            },
+            {
+                src: './comi/64.jpg',
+                alt: '이미지 64',
+                description: '쥰님 그림'
+            },
+            {
+                src: './comi/65.jpg',
+                alt: '이미지 65',
+                description: '트친 (익명)그림'
+            },
+            {
+                src: './comi/66.jpg',
+                alt: '이미지 66',
+                description: '초이 그림'
+            },
+            {
+                src: './comi/67.jpg',
+                alt: '이미지 67',
+                description: '커미션: duyu'
+            },
+            {
+                src: './comi/68.jpg',
+                alt: '이미지 68',
+                description: '커미션: 악개개'
+            },
+            {
+                src: './comi/69.jpg',
+                alt: '이미지 69',
+                description: '커미션: bestyouvegot'
+            },
+            {
+                src: './comi/70.jpg',
+                alt: '이미지 70',
+                description: '커미션: 찬희'
+            },
+            {
+                src: './comi/71.jpg',
+                alt: '이미지 71',
+                description: '커미션: komasi'
+            },
+            {
+                src: './comi/72.jpg',
+                alt: '이미지 72',
+                description: '짹째 그림'
+            },
+            {
+                src: './comi/73.jpg',
+                alt: '이미지 73',
+                description: '커미션: 젠타'
+            },
+            {
+                src: './comi/74.jpg',
+                alt: '이미지 74',
+                description: '커미션: tqy'
             }
-
-            
-            
         ];
         
         // For demonstration, let's create sample data
