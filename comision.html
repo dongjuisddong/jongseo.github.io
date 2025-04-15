@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark Gallery</title>
+    <style>
+        :root {
+            --dark-bg: #1c1c1c;
+            --darker-bg: #151515;
+            --text-color: #e0e0e0;
+            --accent: #666;
+            --highlight: #888;
+        }
+        
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-color);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        
+        header {
+            background-color: var(--darker-bg);
+            padding: 1.5rem;
+            text-align: center;
+            border-bottom: 1px solid #333;
+        }
+        
+        h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+        
+        .gallery-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 4px;
+            background-color: var(--darker-bg);
+            cursor: pointer;
+            height: 250px;
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.9;
+            transition: opacity 0.3s ease;
+        }
+        
+        .gallery-item:hover img {
+            opacity: 1;
+        }
+        
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin: 2rem 0;
+            gap: 0.5rem;
+        }
+        
+        .pagination button {
+            background-color: var(--darker-bg);
+            color: var(--text-color);
+            border: 1px solid #333;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        
+        .pagination button.active {
+            background-color: var(--accent);
+            border-color: var(--highlight);
+        }
+        
+        .pagination button:hover:not(.active) {
+            background-color: #333;
+        }
+        
+        /* Lightbox */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            flex-direction: column;
+        }
+        
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 80%;
+        }
+        
+        .lightbox img {
+            max-width: 100%;
+            max-height: 70vh;
+            object-fit: contain;
+        }
+        
+        .lightbox-caption {
+            color: var(--text-color);
+            text-align: center;
+            padding: 1rem 0;
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1rem;
+        }
+        
+        .close-lightbox {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: var(--text-color);
+            font-size: 30px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 30px;
+            box-sizing: border-box;
+            transform: translateY(-50%);
+        }
+        
+        .lightbox-nav button {
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 20px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .lightbox-nav button:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+        
+        @media (max-width: 768px) {
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+                gap: 1rem;
+            }
+            
+            .gallery-item {
+                height: 180px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>GALLERY</h1>
+    </header>
+    
+    <div class="gallery-container">
+        <div class="gallery" id="gallery">
+            <!-- Gallery items will be inserted here by JavaScript -->
+        </div>
+        
+        <div class="pagination" id="pagination">
+            <!-- Pagination buttons will be inserted here by JavaScript -->
+        </div>
+    </div>
+    
+    <div class="lightbox" id="lightbox">
+        <span class="close-lightbox" id="close-lightbox">&times;</span>
+        <div class="lightbox-content">
+            <img src="" id="lightbox-img" alt="Enlarged view">
+            <div class="lightbox-nav">
+                <button id="prev-btn">&lt;</button>
+                <button id="next-btn">&gt;</button>
+            </div>
+        </div>
+        <div class="lightbox-caption" id="lightbox-caption"></div>
+    </div>
+    
+    <script>
+        // Configuration
+        const imagesPerPage = 12;
+        const imageFolderPath = 'comi/'; // Path to your images folder
+        
+        // Sample image data (in a real implementation, this would come from your server)
+        // The server would scan the 'comi' folder and return info about available images
+        let allImages = [];
+        
+        // For demonstration, let's create sample data
+        // In a real implementation, this would be populated from server-side code
+        for (let i = 1; i <= 35; i++) {
+            allImages.push({
+                src: `/api/placeholder/${300}/${300}`, // Using placeholder images for demo
+                alt: `Image ${i}`,
+                description: `Description for image ${i}. Add your detailed description here.`
+            });
+        }
+        
+        // Variables
+        let currentPage = 1;
+        const totalPages = Math.ceil(allImages.length / imagesPerPage);
+        let currentLightboxIndex = 0;
+        
+        // Elements
+        const galleryEl = document.getElementById('gallery');
+        const paginationEl = document.getElementById('pagination');
+        const lightboxEl = document.getElementById('lightbox');
+        const lightboxImgEl = document.getElementById('lightbox-img');
+        const lightboxCaptionEl = document.getElementById('lightbox-caption');
+        const closeLightboxEl = document.getElementById('close-lightbox');
+        const prevBtnEl = document.getElementById('prev-btn');
+        const nextBtnEl = document.getElementById('next-btn');
+        
+        // Functions
+        function displayImages(page) {
+            const startIndex = (page - 1) * imagesPerPage;
+            const endIndex = startIndex + imagesPerPage;
+            const paginated = allImages.slice(startIndex, endIndex);
+            
+            galleryEl.innerHTML = '';
+            
+            paginated.forEach((image, index) => {
+                const absoluteIndex = startIndex + index;
+                const imageEl = document.createElement('div');
+                imageEl.classList.add('gallery-item');
+                imageEl.innerHTML = `<img src="${image.src}" alt="${image.alt}">`;
+                imageEl.addEventListener('click', () => openLightbox(absoluteIndex));
+                galleryEl.appendChild(imageEl);
+            });
+        }
+        
+        function updatePagination() {
+            paginationEl.innerHTML = '';
+            
+            for (let i = 1; i <= totalPages; i++) {
+                const button = document.createElement('button');
+                button.textContent = i;
+                if (i === currentPage) {
+                    button.classList.add('active');
+                }
+                button.addEventListener('click', () => {
+                    currentPage = i;
+                    displayImages(currentPage);
+                    updatePagination();
+                });
+                paginationEl.appendChild(button);
+            }
+        }
+        
+        function openLightbox(index) {
+            currentLightboxIndex = index;
+            const image = allImages[index];
+            
+            lightboxImgEl.src = image.src;
+            lightboxImgEl.alt = image.alt;
+            lightboxCaptionEl.textContent = image.description;
+            lightboxEl.style.display = 'flex';
+            
+            // Disable scrolling on the body when lightbox is open
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeLightbox() {
+            lightboxEl.style.display = 'none';
+            // Re-enable scrolling
+            document.body.style.overflow = '';
+        }
+        
+        function nextImage() {
+            currentLightboxIndex = (currentLightboxIndex + 1) % allImages.length;
+            const image = allImages[currentLightboxIndex];
+            lightboxImgEl.src = image.src;
+            lightboxImgEl.alt = image.alt;
+            lightboxCaptionEl.textContent = image.description;
+        }
+        
+        function prevImage() {
+            currentLightboxIndex = (currentLightboxIndex - 1 + allImages.length) % allImages.length;
+            const image = allImages[currentLightboxIndex];
+            lightboxImgEl.src = image.src;
+            lightboxImgEl.alt = image.alt;
+            lightboxCaptionEl.textContent = image.description;
+        }
+        
+        // Event listeners
+        closeLightboxEl.addEventListener('click', closeLightbox);
+        prevBtnEl.addEventListener('click', prevImage);
+        nextBtnEl.addEventListener('click', nextImage);
+        
+        // Close lightbox with ESC key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            } else if (e.key === 'ArrowRight') {
+                nextImage();
+            } else if (e.key === 'ArrowLeft') {
+                prevImage();
+            }
+        });
+        
+        // Click outside image to close lightbox
+        lightboxEl.addEventListener('click', (e) => {
+            if (e.target === lightboxEl) {
+                closeLightbox();
+            }
+        });
+        
+        // Initialize gallery
+        displayImages(currentPage);
+        updatePagination();
+        
+        // In a real implementation, you would fetch the images from the server
+        // For example:
+        /*
+        fetch('/get-gallery-images')
+            .then(response => response.json())
+            .then(data => {
+                allImages = data;
+                displayImages(currentPage);
+                updatePagination();
+            })
+            .catch(error => console.error('Error loading gallery images:', error));
+        */
+    </script>
+</body>
+</html>
