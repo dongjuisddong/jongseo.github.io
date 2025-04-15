@@ -36,6 +36,31 @@
             text-align: center;
             border-bottom: 1px solid #333;
         }
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            width: 100%;
+        }
+        
+        .home-button {
+            position: absolute;
+            left: 20px;
+            background-color: #333;
+            color: var(--text-color);
+            border: 1px solid #444;
+            padding: 8px 15px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        
+        .home-button:hover {
+            background-color: #444;
+            color: #fff;
+        }
         
         h1 {
             margin: 0;
@@ -199,6 +224,10 @@
 </head>
 <body>
     <header>
+    <div class="header-content">
+        <a href="index.html" class="home-button">홈으로</a>
+        <h1>GALLERY</h1>
+    </div>
         <h1>GALLERY</h1>
     </header>
     
