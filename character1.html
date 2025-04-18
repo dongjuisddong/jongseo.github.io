@@ -305,17 +305,19 @@
     position: fixed;
     bottom: 20px;
     right: 20px;
-    width: 30px;            /* 좀 더 크면 이모지 잘 보여 */
+    width: 30px;
     height: 30px;
     background-color: white;
     border-radius: 5px;
-    text-decoration: none;
-    font-size: 16px;
-    color: black;
     display: flex;
     align-items: center;
     justify-content: center;
+    text-decoration: none;
     z-index: 9999;
+}
+.home-button svg {
+    width: 16px;
+    height: 16px;
 }
     </style>
 </head>
@@ -394,7 +396,11 @@
                 <img src="./comi/hanmain.png" alt="캐릭터 이미지" class="character-foreground">
             </div>
 </div>
-    <a href="main.html" class="home-button">🏠</a>
+    <a href="index.html" class="home-button">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black" viewBox="0 0 16 16">
+        <path d="M8 .5l6.5 6.5V15h-5v-4H6v4H1V7L8 .5z"/>
+    </svg>
+</a>
 
 </body>
 </html>
