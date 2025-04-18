@@ -14,18 +14,20 @@
         
         body {
             display: flex;
+            flex-direction: column;
             background-color: #202020;
             color: white;
-            height: 100vh;
+            min-height: 100vh;
         }
         
         .left-section {
             flex: 1;
             display: flex;
-    flex-direction: column;
+            flex-direction: column;
             background-color: #555555;
             position: relative;
             overflow: hidden;
+            min-height: 100vh;
         }
 
         .character-foreground-container {
@@ -33,9 +35,9 @@
             top: 60%;
             left: 95px;
             transform: translateY(-50%);
-            width: 800px; /* 고정 너비 */
-            height: 1150px; /* 고정 높이 */
-            overflow: hidden; /* 넘치는 부분 숨김 */
+            width: 800px;
+            height: 1150px;
+            overflow: hidden;
             z-index: 2;
         }
         
@@ -48,93 +50,20 @@
 
         .character-foreground {
             position: relative;
-            width: 800px; /* 너비를 키움 (400px에서 증가) */
-            height: 1150px; /* 높이를 키움 (450px에서 증가) */
+            width: 800px;
+            height: 1150px;
             object-fit: cover;
             object-position: center;
-            left: -250px; /* 필요에 따라 이 값도 조정 */
+            left: -250px;
         }
 
         .right-section-main {
-            width: 0px; /* 고정 가로 크기 */
+            width: 0px;
             background-color: #202020;
             padding: 40px;
             display: flex;
             flex-direction: column;
             box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
-        }
-        
-        .music-player {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80%;
-            background-color: rgba(255, 255, 255, 0.8);
-            padding: 15px;
-            border-radius: 15px;
-            color: #333;
-        }
-        
-        .music-info {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-        
-        .album-cover {
-            width: 60px;
-            height: 60px;
-            object-fit: cover;
-            border-radius: 8px;
-            margin-right: 15px;
-        }
-        
-        .song-details h3 {
-            font-size: 16px;
-            margin-bottom: 4px;
-        }
-        
-        .song-details p {
-            font-size: 14px;
-            color: #666;
-        }
-        
-        .progress-container {
-            background: #ccc;
-            border-radius: 5px;
-            height: 4px;
-            width: 100%;
-            margin-bottom: 10px;
-            position: relative;
-        }
-        
-        .progress {
-            background: #333;
-            border-radius: 5px;
-            height: 100%;
-            width: 12%;
-        }
-        
-        .timestamp {
-            display: flex;
-            justify-content: space-between;
-            font-size: 12px;
-            margin-bottom: 10px;
-        }
-        
-        .controls {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 30px;
-        }
-        
-        .controls button {
-            background: none;
-            border: none;
-            font-size: 20px;
-            cursor: pointer;
         }
         
         .date-time {
@@ -162,8 +91,6 @@
             flex-direction: column;
             padding: 40px;
         }
-
-        
         
         .character-header {
             margin-bottom: 40px;
@@ -229,18 +156,6 @@
             font-weight: 300;
         }
         
-        .current-date {
-            background-color: white;
-            color: black;
-            border-radius: 50%;
-            width: 36px;
-            height: 36px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 0 auto;
-        }
-        
         .character-container {
             display: flex;
             margin-top: 40px;
@@ -301,24 +216,160 @@
             margin-top: 20px;
             text-decoration: none;
         }
+        
         .home-button {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 60px;
-    height: 60px;
-    background-color: white;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    z-index: 9999;
-}
-.home-button svg {
-    width: 32px;
-    height: 32px;
-}
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background-color: white;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            z-index: 9999;
+        }
+        
+        .home-button svg {
+            width: 32px;
+            height: 32px;
+        }
+
+        /* 모바일 반응형 스타일 */
+        @media screen and (max-width: 768px) {
+            body {
+                flex-direction: column;
+            }
+            
+            .left-section {
+                height: 50vh;
+                min-height: 400px;
+            }
+            
+            .right-section {
+                padding: 20px;
+            }
+            
+            .character-foreground-container {
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 100%;
+                height: 600px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            
+            .character-foreground {
+                width: auto;
+                height: 600px;
+                left: 0;
+                position: relative;
+                transform: scale(1.2);
+            }
+            
+            .date-time .time {
+                font-size: 40px;
+            }
+            
+            .character-name {
+                font-size: 28px;
+            }
+            
+            .calendar-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .current-day {
+                font-size: 40px;
+            }
+            
+            .character-container {
+                flex-direction: column;
+            }
+            
+            .character-image {
+                width: 100%;
+                height: 200px;
+            }
+            
+            .character-details {
+                margin-top: 20px;
+            }
+            
+            .calendar-table th {
+                font-size: 14px;
+            }
+            
+            .home-button {
+                width: 50px;
+                height: 50px;
+            }
+        }
+        
+        /* 더 작은 모바일 화면용 스타일 */
+        @media screen and (max-width: 480px) {
+            .left-section {
+                height: 40vh;
+                min-height: 300px;
+            }
+            
+            .date-time {
+                top: 30px;
+            }
+            
+            .date-time .time {
+                font-size: 32px;
+            }
+            
+            .character-foreground-container {
+                height: 500px;
+            }
+            
+            .character-foreground {
+                height: 500px;
+            }
+            
+            .right-section {
+                padding: 15px;
+            }
+            
+            .character-header {
+                margin-bottom: 20px;
+            }
+            
+            .character-name {
+                font-size: 24px;
+                margin-bottom: 15px;
+            }
+            
+            .message-bubble,
+            .response-bubble {
+                padding: 10px 15px;
+                font-size: 13px;
+            }
+            
+            .calendar-section {
+                margin-top: 20px;
+            }
+            
+            .year-month {
+                font-size: 18px;
+            }
+            
+            .current-day {
+                font-size: 32px;
+            }
+            
+            .action-button {
+                padding: 8px 12px;
+                font-size: 13px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -330,14 +381,8 @@
             <div class="time"></div>
         </div>
         
-  
-            
-            <div class="progress-container">
-                <div class="progress"></div>
-            </div>
-            
-
-    
+        <div class="progress-container">
+            <div class="progress"></div>
         </div>
     </div>
     
@@ -369,7 +414,7 @@
                         그의 뒷 성격이 표출 되고 만다. 
                         모종의 사건 후, 사귀고 난 뒤로 자신의 감정을 인정하려 노력한다. 이종한을 매우 사랑하만 여전히 복잡한 감정을 가지고 있어, 자주 싸우게 된다. 언제부터 좋아했나. 어쩌면 처음부터.<br>-<br>좋아하는 거: 크로크무슈, 야구<br>싫어하는거: 아버지관련 이야기, <s>야구</s></th>
                     </tr>
-                </tbody>
+                </thead>
             </table>
         </div>
         
@@ -387,20 +432,32 @@
                 </p>
                 <a href="character.html" class="action-button">새끼가 뭐라고 했냐.(클릭시 해당 캐릭터 프로필로)</a>
             </div>
-            
         </div>
-        
-        
+    </div>
 
     <div class="character-foreground-container">
-                <img src="./comi/hanmain.png" alt="캐릭터 이미지" class="character-foreground">
-            </div>
-</div>
+        <img src="./comi/hanmain.png" alt="캐릭터 이미지" class="character-foreground">
+    </div>
+    
     <a href="main.html" class="home-button">
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black" viewBox="0 0 16 16">
-        <path d="M8 .5l6.5 6.5V15h-5v-4H6v4H1V7L8 .5z"/>
-    </svg>
-</a>
-
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black" viewBox="0 0 16 16">
+            <path d="M8 .5l6.5 6.5V15h-5v-4H6v4H1V7L8 .5z"/>
+        </svg>
+    </a>
+    
+    <script>
+        // 현재 날짜와 시간 표시
+        function updateDateTime() {
+            const now = new Date();
+            const dateOptions = { month: 'long', day: 'numeric', weekday: 'long' };
+            const timeOptions = { hour: '2-digit', minute: '2-digit', hour12: false };
+            
+            document.querySelector('.date').textContent = now.toLocaleDateString('ko-KR', dateOptions);
+            document.querySelector('.time').textContent = now.toLocaleTimeString('ko-KR', timeOptions);
+        }
+        
+        updateDateTime();
+        setInterval(updateDateTime, 60000); // 1분마다 업데이트
+    </script>
 </body>
 </html>
