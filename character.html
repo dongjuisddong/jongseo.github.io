@@ -25,6 +25,17 @@
             position: relative;
             overflow: hidden;
         }
+
+        character-foreground-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70%; /* 컨테이너 너비 조절 */
+            height: 80%;
+            overflow: hidden; /* 넘치는 부분 숨김 */
+            z-index: 2;
+        }
         
         .sketch-background {
             opacity: 0.6;
@@ -284,8 +295,9 @@
 <body>
     <div class="left-section">
         <img src=".g" alt="Sketch Background" class="sketch-background">
-        <img src="./comi/jongmain.png" alt="캐릭터 이미지" class="character-foreground">
-        
+        <div class="character-foreground-container">
+            <img src="./comi/jongmain.png" alt="캐릭터 이미지" class="character-foreground">
+        </div>
         <div class="date-time">
             <div class="date">2월 27일 화요일</div>
             <div class="time">02:08</div>
