@@ -30,8 +30,8 @@
             position: absolute;
             top: 80%;
             left: 80%;
-            transform: translate(0%, 0%);
-            width: 400px; /* 고정 너비 */
+            transform: translate(-50%, -50%);
+            width: 500px; /* 고정 너비 */
             height: 850px; /* 고정 높이 */
             overflow: hidden; /* 넘치는 부분 숨김 */
             z-index: 2;
@@ -46,11 +46,11 @@
 
         .character-foreground {
             position: relative;
-            width: 400px; /* 이미지를 더 크게 표시하여 좌우 잘림 효과 */
-            height: 450px; /* 높이는 컨테이너와 맞춤 */
+            width: 500px; /* 너비를 키움 (400px에서 증가) */
+            height: 850px; /* 높이를 키움 (450px에서 증가) */
             object-fit: cover;
-            object-position: center; /* 이미지 중앙 표시 */
-            left: -50px; /* 좌측으로 이동하여 좌우측 자름 (필요에 따라 조절) */
+            object-position: center;
+            left: -50px; /* 필요에 따라 이 값도 조정 */
         }
         
         .music-player {
