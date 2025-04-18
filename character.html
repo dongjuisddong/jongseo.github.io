@@ -26,13 +26,13 @@
             overflow: hidden;
         }
 
-        character-foreground-container {
+        .character-foreground-container {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 20%; /* 컨테이너 너비 조절 */
-            height: 80%;
+            width: 300px; /* 고정 너비 */
+            height: 450px; /* 고정 높이 */
             overflow: hidden; /* 넘치는 부분 숨김 */
             z-index: 2;
         }
@@ -45,14 +45,12 @@
         }
 
         .character-foreground {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 80%;
-            height: 80%;
-            object-fit: contain;
-            z-index: 2;
+            position: relative;
+            width: 400px; /* 이미지를 더 크게 표시하여 좌우 잘림 효과 */
+            height: 450px; /* 높이는 컨테이너와 맞춤 */
+            object-fit: cover;
+            object-position: center; /* 이미지 중앙 표시 */
+            left: -50px; /* 좌측으로 이동하여 좌우측 자름 (필요에 따라 조절) */
         }
         
         .music-player {
