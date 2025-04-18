@@ -288,6 +288,24 @@
             margin-top: 20px;
             text-decoration: none;
         }
+         .home-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background-color: white;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    z-index: 9999;
+}
+.home-button svg {
+    width: 32px;
+    height: 32px;
+}
     </style>
 </head>
 <body>
@@ -363,6 +381,11 @@
     <div class="character-foreground-container">
                 <img src="./comi/jongmain.png" alt="캐릭터 이미지" class="character-foreground">
             </div>
+    <a href="index.html" class="home-button">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black" viewBox="0 0 16 16">
+        <path d="M8 .5l6.5 6.5V15h-5v-4H6v4H1V7L8 .5z"/>
+    </svg>
+</a>
 
 </body>
 </html>
