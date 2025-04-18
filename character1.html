@@ -305,12 +305,17 @@
     position: fixed;
     bottom: 20px;
     right: 20px;
-    width: 10px;
-    height: 10px;
-    background-color: white; /* 원하면 다른 색 */
-    border-radius: 2px;
-    z-index: 9999;
+    width: 30px;            /* 좀 더 크면 이모지 잘 보여 */
+    height: 30px;
+    background-color: white;
+    border-radius: 5px;
     text-decoration: none;
+    font-size: 16px;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
 }
     </style>
 </head>
@@ -389,7 +394,7 @@
                 <img src="./comi/hanmain.png" alt="캐릭터 이미지" class="character-foreground">
             </div>
 </div>
-    <a href="main.html" class="home-button"></a>
+    <a href="main.html" class="home-button">🏠</a>
 
 </body>
 </html>
