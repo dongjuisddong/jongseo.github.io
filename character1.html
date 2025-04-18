@@ -52,6 +52,20 @@
             object-position: center;
             left: -250px; /* 필요에 따라 이 값도 조정 */
         }
+
+        .right-section-main {
+    position: fixed;          /* 화면에 고정! */
+    top: 0;                   /* 위에서 0px */
+    right: 0;                 /* 오른쪽에서 0px */
+    width: 300px;             /* 고정된 가로 크기 */
+    height: 100vh;            /* 화면 높이 전부 */
+    background-color: #f2f2f2;/* 배경색 (선택) */
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1); /* 살짝 그림자 효과 */
+    z-index: 1000;            /* 다른 요소보다 위에 */
+}
         
         .music-player {
             position: absolute;
@@ -151,6 +165,8 @@
             flex-direction: column;
             padding: 40px;
         }
+
+        
         
         .character-header {
             margin-bottom: 40px;
@@ -363,6 +379,9 @@
     <div class="character-foreground-container">
                 <img src="./comi/hanmain.png" alt="캐릭터 이미지" class="character-foreground">
             </div>
+    <div class="right-section-main">
+    <p>여기 오른쪽 고정 영역이야!</p>
+</div>
 
 </body>
 </html>
